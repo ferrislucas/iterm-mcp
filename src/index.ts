@@ -46,7 +46,7 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           type: "object",
           properties: {
             linesOfOutput: {
-              type: "number",
+              type: "integer",
               description: "The number of lines of output to read."
             },
           },
