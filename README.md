@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ferrislucas-iterm-mcp-badge.png)](https://mseep.ai/app/ferrislucas-iterm-mcp)
+
 # iterm-mcp 
 A Model Context Protocol server that provides access to your iTerm session.
 
