@@ -33,7 +33,7 @@ class CommandExecutor {
    * 4. Retrieving the terminal output after command execution
    * 
    * @param command The command to execute (can contain newlines)
-   * @param wait Whether to wait for the command to finish executing (useful for TUI applications)
+   * @param wait Whether to wait for the command to finish executing (false is useful for TUI applications)
    * @returns A promise that resolves to the terminal output after command execution
    */
   async executeCommand(command: string, wait: boolean): Promise<string> {

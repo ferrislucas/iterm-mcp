@@ -37,7 +37,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             wait: {
               type: "boolean",
-              description: "Whether to wait for the command to finish executing (useful for TUI applications)"
+              description: "Whether to wait for the command to finish executing (default: true, false is useful for TUI applications)",
+              default: true
             },
           },
           required: ["command"]
@@ -80,7 +81,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     case "write_to_terminal": {
       let executor = new CommandExecutor();
       const command = String(request.params.arguments?.command);
-      const wait = Boolean(request.params.arguments?.wait);
+      const wait = request.params.arguments?.wait !== undefined ? Boolean(request.params.arguments?.wait) : true;
       const beforeCommandBuffer = await TtyOutputReader.retrieveBuffer();
       const beforeCommandBufferLines = beforeCommandBuffer.split("\n").length;
       
