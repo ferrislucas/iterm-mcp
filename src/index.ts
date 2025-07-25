@@ -35,6 +35,10 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
               type: "string",
               description: "The command to run or text to write to the terminal"
             },
+            wait: {
+              type: "boolean",
+              description: "Whether to wait for the command to finish executing (useful for TUI applications)"
+            },
           },
           required: ["command"]
         }
@@ -76,10 +80,11 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
     case "write_to_terminal": {
       let executor = new CommandExecutor();
       const command = String(request.params.arguments?.command);
+      const wait = Boolean(request.params.arguments?.wait);
       const beforeCommandBuffer = await TtyOutputReader.retrieveBuffer();
       const beforeCommandBufferLines = beforeCommandBuffer.split("\n").length;
       
-      await executor.executeCommand(command);
+      await executor.executeCommand(command, wait);
       
       const afterCommandBuffer = await TtyOutputReader.retrieveBuffer();
       const afterCommandBufferLines = afterCommandBuffer.split("\n").length;

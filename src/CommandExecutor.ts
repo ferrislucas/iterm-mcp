@@ -33,9 +33,10 @@ class CommandExecutor {
    * 4. Retrieving the terminal output after command execution
    * 
    * @param command The command to execute (can contain newlines)
+   * @param wait Whether to wait for the command to finish executing (useful for TUI applications)
    * @returns A promise that resolves to the terminal output after command execution
    */
-  async executeCommand(command: string): Promise<string> {
+  async executeCommand(command: string, wait: boolean): Promise<string> {
     const escapedCommand = this.escapeForAppleScript(command);
     
     try {
@@ -50,13 +51,13 @@ class CommandExecutor {
       }
       
       // Wait until iTerm2 reports that command processing is complete
-      while (await this.isProcessing()) {
+      while (wait && await this.isProcessing()) {
         await sleep(100);
       }
       
       // Get the TTY path and check if it's waiting for user input
       const ttyPath = await this.retrieveTtyPath();
-      while (await this.isWaitingForUserInput(ttyPath) === false) {
+      while (wait && await this.isWaitingForUserInput(ttyPath) === false) {
         await sleep(100);
       }
 
