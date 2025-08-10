@@ -85,6 +85,6 @@ done`;
   }
 }
 
-testMultilineCommand()
+await testMultilineCommand()
 await testExecuteCommand()
 await testSendControlCharacter()

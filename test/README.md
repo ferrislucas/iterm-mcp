@@ -31,7 +31,7 @@ yarn test:watch
 yarn test:coverage
 
 # Run e2e tests
-yarn test:e2e
+yarn e2e
 ```
 
 ## Writing Tests
