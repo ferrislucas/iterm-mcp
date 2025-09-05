@@ -56,4 +56,21 @@ describe('CommandExecutor', () => {
     );
     expect(calledWith).toBeTruthy();
   });
+
+  test('escapeForAppleScript handles various Unicode characters', async () => {
+    const testCommand = 'echo 🚀 café 中文 🎯';
+    const escapedCommand = commandExecutor.escapeForAppleScript(testCommand);
+
+    expect(escapedCommand).toBe('echo 🚀 café 中文 🎯');
+  });
+
+  test('escapeForAppleScript still escapes control characters', async () => {
+    const testCommand = 'echo\ttest\nline';  // tab and newline
+    const escapedCommand = commandExecutor.escapeForAppleScript(testCommand);
+
+    // This should use multiline handling since it contains newlines
+    expect(escapedCommand).toContain('return');
+    expect(escapedCommand).not.toContain('\t');
+    expect(escapedCommand).not.toContain('\n');
+  });
 });
