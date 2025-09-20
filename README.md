@@ -60,6 +60,8 @@ To install iTerm for Claude Desktop automatically via [Smithery](https://smither
 ```bash
 npx -y @smithery/cli install iterm-mcp --client claude
 ```
+
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/ferrislucas/iterm-mcp)](https://archestra.ai/mcp-catalog/ferrislucas__iterm-mcp)
 [![smithery badge](https://smithery.ai/badge/iterm-mcp)](https://smithery.ai/server/iterm-mcp)
 
 ## Development
