@@ -1,6 +1,6 @@
 {
   "name": "iterm-mcp",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "A Model Context Protocol server that provides access to the currently active tab of iTerm",
   "homepage": "https://github.com/ferrislucas/iterm-mcp#readme",
   "repository": {
