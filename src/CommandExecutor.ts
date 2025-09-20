@@ -119,7 +119,7 @@ class CommandExecutor {
    * @param str The string to escape
    * @returns A properly escaped string ready for AppleScript execution
    */
-  private escapeForAppleScript(str: string): string {
+  escapeForAppleScript(str: string): string {
     // Check if the string contains newlines
     if (str.includes('\n')) {
       // For multiline text, we need to use a different AppleScript approach
@@ -136,8 +136,8 @@ class CommandExecutor {
     // Handle single quotes by breaking out of the quote, escaping the quote, and going back in
     str = str.replace(/'/g, "'\\''");
     
-    // Handle special characters (except newlines which are handled separately)
-    str = str.replace(/[^\x20-\x7E]/g, (char) => {
+    // Handle control characters only - AppleScript handles Unicode characters natively
+    str = str.replace(/[\x00-\x1F\x7F]/g, (char) => {
       return '\\u' + char.charCodeAt(0).toString(16).padStart(4, '0');
     });
     
