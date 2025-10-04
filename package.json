@@ -30,7 +30,8 @@
     "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --config=jest.config.cjs --coverage"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "0.6.0"
+    "@modelcontextprotocol/sdk": "0.6.0",
+    "mcp-evals": "^1.0.18"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
